@@ -1,38 +1,191 @@
-.App {
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+.app {
+  font-family: "Montserrat", sans-serif;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+.flex{
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.flex p{
+  margin-top: 20px;
+}
+header {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+form {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  width: 90%;
+	max-width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10vh;
+	margin-bottom: 2vh;
+	background-color: #FFF;
+	border-radius: .5rem;
+	box-shadow: 0 5px 15px rgba(#000, .2); 
+  padding: 1.5rem 1.5rem 1rem;
+}
+form .error {
+  color: red;
+}
+.isEditing input,form input,textarea {
+  padding: 14px 22px;
+  border-radius: .5rem;
+  border: 2px solid #2e44ff;
+}
+textarea{
+  resize: vertical;
+}
+form button, .isEditing button{
+  padding: .5rem 1rem;
+	font-weight: 500;
+	border: 2px solid #2e44ff;
+	border-radius: .25rem;
+  background-color: #2e44ff;
+  color: #FFF;
+}
+.isEditing button{
+  background-color: #2cd1a2;
+}
+.isEditing{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+.tasklist{
+  width: 90%;
+	max-width: 500px;
+  margin: 10vh auto;
+}
+.filter {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}
+.task-list {
+  margin-top: 20px;
+}
+.task {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #2e44ff;
+  color: #FFF;
+  border-radius: .5rem;
+  padding: 1.5rem 1.5rem;
+}
+.task h3 {
+  margin-bottom: 12px;
+}
+.task p{
+  margin: 12px 0;
+  
+}
+.dueDate{
+  display: flex;
   align-items: center;
+  gap: 5px;
+}
+.task p box-icon{
+  width: 0.99em;
+}
+.taskinf button {
+  width: 100px;
+  margin-right: 10px;
+  padding: .5rem 1rem;
+	border: 2px solid #fff;
+	border-radius: .25rem;
+  background-color: #fff;
+  color: #2e44ff;
+  cursor: pointer;
+}
+.task button span box-icon{
+  width: 0.99em;
+}
+.task button span{
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
 }
 
-.App-link {
-  color: #61dafb;
+.container {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin: 12px 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border-radius: .5rem;
+  background-color: #eee;
+}
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2cd1a2;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 6px;
+  top: 3px;
+  width: 5px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
